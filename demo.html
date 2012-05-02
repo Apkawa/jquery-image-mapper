@@ -8,7 +8,11 @@
     <script src="jquery.image-mapper.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready( function() {
-            $('#demo').imageAreaMapper({});
+            $('#demo').imageAreaMapper({
+                    onSave: function (data) {
+                        $('#json_result').append(JSON.stringify(data))
+                    }
+            });
 
                 });
     </script>
@@ -26,15 +30,15 @@
             opacity: 0.5;
             filter: alpha(opacity=50);
         }
-.b-image-area span {
-    background: none repeat scroll 0 0 #EA150A;
-    color: #FFFFFF;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    margin: 1px 0 0 1px;
-    padding: 0 4px 2px;
-}
+        .b-image-area span {
+            background: none repeat scroll 0 0 #EA150A;
+            color: #FFFFFF;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 1px 0 0 1px;
+            padding: 0 4px 2px;
+        }
 
     </style>
 </head>
@@ -42,5 +46,6 @@
     <div>
         <img id='demo' width="600" height="420" />
     </div>
+    <textarea id="json_result"> </textarea>
 </body>
 </html>

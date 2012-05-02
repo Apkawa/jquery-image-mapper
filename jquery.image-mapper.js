@@ -37,12 +37,12 @@
                     "title": _currentArea.title
                 };
                 newArea.attr("rel",coords).attr("oid",areaCount)
-                .find(".area-number-value")
-                .text(areaCountVisible + ".").end()
-                .find(".area-coords-value")
-                .text(coords).end()
-                .find("input[name='area-link-value']").val(_currentArea.link).end()
-                .find("input[name='area-title-value']").val(_currentArea.title);
+                    .find(".area-number-value")
+                    .text(areaCountVisible + ".").end()
+                    .find(".area-coords-value")
+                    .text(coords).end()
+                    .find("input[name='area-link-value']").val(_currentArea.link).end()
+                    .find("input[name='area-title-value']").val(_currentArea.title);
                 newArea.find("a").click(function(e) {
                     e.preventDefault();
                     var _line = $(this).closest("li");
@@ -62,11 +62,14 @@
                          $("#nab" + _areaID).removeClass("highlight");
                     }
                 );
+
+                pic_position = pic.position()
+
                 var newAreaBlock = $("<div>").addClass("b-image-area").css({
                     "width": _currentArea.width,
                     "height": _currentArea.height,
-                    "top": _currentArea.y1,
-                    "left": _currentArea.x1,
+                    "top": pic_position.top + _currentArea.y1,
+                    "left": pic_position.left + _currentArea.x1,
                     "z-index": currentZIndex
                 }).attr("id","nab" + areaCount).html("<span>" + areaCountVisible + "</span>");
                 sectionImage.append(newAreaBlock);
